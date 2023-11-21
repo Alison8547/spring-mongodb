@@ -8,10 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Validated
 @RestController
@@ -22,8 +21,13 @@ public class StudentController {
     private final StudentService studentService;
 
 
-    @PostMapping("create-student")
+    @PostMapping("/create-student")
     public ResponseEntity<StudentResponse> createStudent(@Valid @RequestBody StudentRequest studentRequest) {
         return new ResponseEntity<>(studentService.createStudent(studentRequest), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/list-age-lt")
+    public ResponseEntity<List<StudentResponse>> listStudentsLtAge(@RequestParam Integer age) {
+        return new ResponseEntity<>(studentService.listStudentsLtAge(age), HttpStatus.OK);
     }
 }

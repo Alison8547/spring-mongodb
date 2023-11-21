@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Log4j2
 @Service
@@ -27,5 +28,12 @@ public class StudentService {
         log.info("Saved student success!");
 
         return mapper.toStudentResponse(student);
+    }
+
+
+    public List<StudentResponse> listStudentsLtAge(Integer age) {
+        return studentRepository.findListStudentsLtAge(age).stream()
+                .map(mapper::toStudentResponse)
+                .toList();
     }
 }
