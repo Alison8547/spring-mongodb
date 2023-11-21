@@ -30,4 +30,9 @@ public class StudentController {
     public ResponseEntity<List<StudentResponse>> listStudentsLtAge(@RequestParam Integer age) {
         return new ResponseEntity<>(studentService.listStudentsLtAge(age), HttpStatus.OK);
     }
+
+    @GetMapping("/list-students-school-name")
+    public ResponseEntity<List<StudentResponse>> listStudentsSchoolName(@RequestParam String schoolName) {
+        return new ResponseEntity<>(studentService.listStudentsSchoolName(schoolName), HttpStatus.OK);
+    }
 }

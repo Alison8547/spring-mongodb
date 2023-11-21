@@ -12,4 +12,8 @@ public interface StudentRepository extends MongoRepository<Student, String> {
 
     @Query("{ age: {$lt: ?0}}")
     List<Student> findListStudentsLtAge(Integer age);
+
+    // regex sensitive case
+    @Query("{'school.name' : { $regex: ?0, $options: 'i'}}")
+    List<Student> findStudentsSchoolName(String schoolName);
 }
