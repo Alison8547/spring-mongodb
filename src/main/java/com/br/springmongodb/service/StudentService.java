@@ -9,9 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Log4j2
@@ -41,6 +40,12 @@ public class StudentService {
 
     public List<StudentResponse> listStudentsSchoolName(String schoolName) {
         return studentRepository.findStudentsSchoolName(schoolName).stream()
+                .map(mapper::toStudentResponse)
+                .toList();
+    }
+
+    public List<StudentResponse> listCreatedDates(Date from, Date to) {
+        return studentRepository.findCreatedDates(from, to).stream()
                 .map(mapper::toStudentResponse)
                 .toList();
     }
