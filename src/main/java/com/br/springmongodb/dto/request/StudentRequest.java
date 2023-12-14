@@ -30,7 +30,6 @@ public class StudentRequest {
     @NotNull
     private Gender gender;
 
-    @NotBlank
     private List<String> hobbies;
 
     @NotNull
