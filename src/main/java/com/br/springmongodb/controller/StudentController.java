@@ -43,4 +43,9 @@ public class StudentController {
                                                                           @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date to) {
         return new ResponseEntity<>(studentService.listCreatedDates(from, to), HttpStatus.OK);
     }
+
+    @GetMapping("/list-gt-date")
+    public ResponseEntity<List<StudentResponse>> listStudentsGtDate(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date value) {
+        return new ResponseEntity<>(studentService.listStudentsGtDate(value), HttpStatus.OK);
+    }
 }

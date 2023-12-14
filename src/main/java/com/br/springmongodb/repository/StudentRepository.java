@@ -19,5 +19,8 @@ public interface StudentRepository extends MongoRepository<Student, String> {
     List<Student> findStudentsSchoolName(String schoolName);
 
     @Query("{ 'created': { $gte: ?0, $lte: ?1} }")
-    List<Student> findCreatedDates(Date from,Date to);
+    List<Student> findCreatedDates(Date from, Date to);
+
+    @Query("{'created': {$gt: ?0}}")
+    List<Student> findStudentsGtDate(Date date);
 }

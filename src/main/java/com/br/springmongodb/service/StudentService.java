@@ -49,4 +49,10 @@ public class StudentService {
                 .map(mapper::toStudentResponse)
                 .toList();
     }
+
+    public List<StudentResponse> listStudentsGtDate(Date date){
+        return studentRepository.findStudentsGtDate(date).stream()
+                .map(mapper::toStudentResponse)
+                .toList();
+    }
 }
