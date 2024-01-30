@@ -1,6 +1,5 @@
 package com.br.springmongodb.dto.request;
 
-import com.br.springmongodb.domain.School;
 import com.br.springmongodb.enums.Gender;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -32,6 +31,4 @@ public class StudentRequest {
 
     private List<String> hobbies;
 
-    @NotNull
-    private School school;
 }

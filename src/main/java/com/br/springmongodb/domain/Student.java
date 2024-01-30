@@ -24,6 +24,5 @@ public class Student {
     private String email;
     private Gender gender;
     private List<String> hobbies;
-    private School school;
     private LocalDateTime created;
 }
