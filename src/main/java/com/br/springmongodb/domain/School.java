@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @EqualsAndHashCode
 @Document(collection = "school")
 public class School {

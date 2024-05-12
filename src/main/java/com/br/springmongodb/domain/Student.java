@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode
+@ToString
 @Document(collection = "students")
 public class Student {
 

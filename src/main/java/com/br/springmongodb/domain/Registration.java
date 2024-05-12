@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @EqualsAndHashCode
 @Document(collection = "registration")
 public class Registration {
