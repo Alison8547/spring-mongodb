@@ -1,9 +1,11 @@
 package com.br.springmongodb.service;
 
 import com.br.springmongodb.domain.Responsible;
+import com.br.springmongodb.domain.Smaller;
 import com.br.springmongodb.domain.Student;
 import com.br.springmongodb.dto.request.StudentRequest;
 import com.br.springmongodb.dto.response.StudentResponse;
+import com.br.springmongodb.exception.BusinessException;
 import com.br.springmongodb.mapper.StudentMapper;
 import com.br.springmongodb.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,16 +30,22 @@ public class StudentService {
         Student student = mapper.toStudentDomain(studentRequest);
         student.setCreated(LocalDateTime.now());
 
+        studentRepository.insert(student);
+        log.info("created student: {}", student);
+
         for (Responsible responsible : studentRequest.getResponsibles()) {
+            responsible.setSmaller(new Smaller(findStudent(student.getId()).getId(), studentRequest.getName()));
             responsibleService.createResponsible(responsible);
         }
 
-        studentRepository.insert(student);
-        log.info("created student: {}", student);
 
         return mapper.toStudentResponse(student);
     }
 
+
+    public Student findStudent(String id) {
+        return studentRepository.findById(id).orElseThrow(() -> new BusinessException("Student not found"));
+    }
 
     public List<StudentResponse> listStudentsLtAge(Integer age) {
         return studentRepository.findListStudentsLtAge(age).stream()

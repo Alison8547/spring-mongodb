@@ -21,6 +21,7 @@ public class Responsible {
     private String name;
     private Integer age;
     private Address address;
+    private Smaller smaller;
     private LocalDateTime created;
 
 }
