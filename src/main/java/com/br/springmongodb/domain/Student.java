@@ -23,7 +23,7 @@ public class Student {
     private Integer age;
     private String email;
     private Gender gender;
-    private List<Responsible> responsibleList;
+    private List<Responsible> responsibles;
     private List<String> hobbies;
     private LocalDateTime created;
 }
