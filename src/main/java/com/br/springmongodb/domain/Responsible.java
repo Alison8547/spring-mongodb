@@ -1,12 +1,10 @@
 package com.br.springmongodb.domain;
 
-import com.br.springmongodb.enums.Gender;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -14,16 +12,14 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @EqualsAndHashCode
-@Document(collection = "students")
-public class Student {
+@Document(collection = "responsible")
+public class Responsible {
 
     @Id
-    private String id;
+    private Integer id;
     private String name;
     private Integer age;
-    private String email;
-    private Gender gender;
-    private List<Responsible> responsibleList;
-    private List<String> hobbies;
+    private Address address;
     private LocalDateTime created;
+
 }
