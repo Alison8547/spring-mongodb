@@ -26,5 +26,6 @@ public class Student {
     private Gender gender;
     private List<Responsible> responsibles;
     private List<String> hobbies;
+    private String school;
     private LocalDateTime created;
 }

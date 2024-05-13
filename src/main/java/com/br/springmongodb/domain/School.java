@@ -20,7 +20,8 @@ public class School {
 
     @Id
     private String id;
-    private String name;
+    private String code;
+    private String nameSchool;
     private List<Student> students = new ArrayList<>();
     private LocalDateTime created;
 

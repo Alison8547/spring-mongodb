@@ -23,12 +23,14 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final ResponsibleService responsibleService;
+    private final SchoolService schoolService;
     private final StudentMapper mapper;
 
 
     public StudentResponse createStudent(StudentRequest studentRequest) {
         Student student = mapper.toStudentDomain(studentRequest);
         student.setCreated(LocalDateTime.now());
+        student.setSchool(schoolService.findSchool("1").getNameSchool());
 
         studentRepository.insert(student);
         log.info("created student: {}", student);
@@ -38,6 +40,7 @@ public class StudentService {
             responsibleService.createResponsible(responsible);
         }
 
+        schoolService.addStudentSchool(student);
 
         return mapper.toStudentResponse(student);
     }
