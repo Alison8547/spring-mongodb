@@ -41,6 +41,7 @@ public class StudentService {
         }
 
         schoolService.addStudentSchool(student);
+        studentRepository.save(student);
 
         return mapper.toStudentResponse(student);
     }
